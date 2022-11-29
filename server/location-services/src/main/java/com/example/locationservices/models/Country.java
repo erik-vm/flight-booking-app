@@ -2,17 +2,21 @@ package com.example.locationservices.models;
 
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-
-import java.util.UUID;
+import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
+@Document
+@NoArgsConstructor
 public class Country {
 
 
-    @Id
-    private UUID id;
+    @MongoId
+    private String id;
     private String name;
 
-
+    public Country(String name) {
+        this.name = name;
+    }
 }
