@@ -9,12 +9,12 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 
-const options = ["Origin","Paris","Monaco", "Roma", "Venecia"];
 
-export default function SplitButton() {
+export default function SplitButton({places}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const options = [... places];
 
   const handleClick = () => {
     console.info(`You clicked ${options[selectedIndex]}`);

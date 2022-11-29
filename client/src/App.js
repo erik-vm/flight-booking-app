@@ -1,15 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from "./Components/Button"
+import Container from "./Components/Container"
 
-const options = ["Origin","Paris","Monaco", "Roma", "Venecia"];
-
+const originData = ["Origin","Paris","Monaco", "Roma", "Venecia"];
+const destinationData = ["Destination", "Madrid", "Dublin", "Berlin", "Lisbon"];
+/*
 function App() {
   return (
+    <div>
     <div className="App">
-      <Button origins = {["Origin","Paris","Monaco", "Roma", "Venecia"]} />
+      <Button places = {originData} />
+    </div>
+    <div className="App">
+      <Button places = {destinationData} />
+    </div>
     </div>
   );
 }
+*/
+function App () {
+  return (
+      <div className="App">
+      <Container/>
+    </div>
+  );
 
+}
 export default App;
