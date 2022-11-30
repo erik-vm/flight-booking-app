@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.solera</groupId>
-    <artifactId>airline-service</artifactId>
+    <artifactId>passenger-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>airline-service</name>
+    <name>passenger-service</name>
     <description>server-template</description>
     <properties>
         <java.version>17</java.version>
