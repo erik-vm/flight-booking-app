@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Container2 from '@mui/material/Container';
 import { positions } from '@mui/system';
 import Button from "./Button"
+import SubmitButton from "./Submit Button"
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -35,7 +36,7 @@ export default function Container(){
         
     
         <Box sx={{margin: 25}}>
-            <Grid container spacing={3}>
+            <Grid container spacing={1} alignItems="center">
             <Grid xs={2}>
                 <Button places = {originData} />
             </Grid>
@@ -59,6 +60,10 @@ export default function Container(){
                 />
 
             </Grid>
+            </Grid>
+
+            <Grid container justifyContent="center" alignItems="flex-end" >
+                <SubmitButton />
             </Grid>
         </Box>
     
