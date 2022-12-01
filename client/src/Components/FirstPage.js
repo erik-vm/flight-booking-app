@@ -16,6 +16,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const originData = ["Origin","Paris","Monaco", "Roma", "Venecia"];
 const destinationData = ["Destination", "Madrid", "Dublin", "Berlin", "Lisbon"];
@@ -63,7 +64,7 @@ export default function FirstPage(){
             </Grid>
 
             <Grid container justifyContent="center" alignItems="flex-end" >
-                <SubmitButton />
+                <SubmitButton handle="/second" />
             </Grid>
         </Box>
     

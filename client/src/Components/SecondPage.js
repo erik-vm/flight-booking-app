@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Grid from '@mui/material/Grid'; // Grid version 1
+import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Container2 from '@mui/material/Container';
 import { positions } from '@mui/system';
-import Button from "./Button"
-import SubmitButton from "./Submit Button"
+import Button from "./Button";
+import SubmitButton from "./Submit Button";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -15,6 +15,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Slider from '@mui/material/Slider';
+import FilterButton from "./Filter Button";
+import NativeSelect from '@mui/material/NativeSelect';
+import InputLabel from '@mui/material/InputLabel';
 
 const airlineNames = ["Big Airline", "Modest Airlene", "Roma Airline"];
 
@@ -32,13 +35,17 @@ export default function SecondPage(){
 
     const GetAirlines = () => {
         return(
-            <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        name="radio-buttons-group"
-                        >
-                {airlineNames.map(i =>(
-            <FormControlLabel value = {i} control={<Radio />} label={i} />))}
-            </RadioGroup>
+            <NativeSelect
+            defaultValue="none"
+            inputProps={{
+                name: 'airlines',
+                id: 'uncontrolled-native',
+            }}
+            >
+            <option value="none">Anyone</option>
+            {airlineNames.map(i =>(
+            <option value = {i}>{i}</option>))}
+            </NativeSelect>
         );
     }
 
@@ -64,8 +71,10 @@ export default function SecondPage(){
                     <FormLabel style= {{color: "red"}}>Luggage</FormLabel>
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="none"
                         name="radio-buttons-group"
                     >
+                        <FormControlLabel value="none" control={<Radio />} label="Indifferent" />
                         <FormControlLabel value="yes" control={<Radio />} label="Allowed" />
                         <FormControlLabel value="no" control={<Radio />} label="Not Allowed" />
                     </RadioGroup>
@@ -79,6 +88,8 @@ export default function SecondPage(){
                         <FormControlLabel value="2" control={<Radio />} label="2 Days" />
                         <FormControlLabel value="3" control={<Radio />} label="3 Days" />
                     </RadioGroup>
+
+                    <FilterButton/>
 
                     </FormControl>               
             

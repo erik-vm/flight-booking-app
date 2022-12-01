@@ -12,7 +12,8 @@ function App () {
     <BrowserRouter>
           <Routes>
             <Route path="/" >
-              <Route index element={<SecondPage />} />
+              <Route index element={<FirstPage />} />
+              <Route path="second" element={<SecondPage />} />
             </Route>
           </Routes>
     </BrowserRouter>
