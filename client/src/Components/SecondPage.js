@@ -18,7 +18,8 @@ import Slider from '@mui/material/Slider';
 import FilterButton from "./Filter Button";
 import NativeSelect from '@mui/material/NativeSelect';
 import InputLabel from '@mui/material/InputLabel';
-import {FlightsData} from "./provdb"
+import {FlightsData} from "./provdb";
+import Typography from '@mui/material/Typography';
 
 const airlineNames = ["Big Airline", "Modest Airlene", "Roma Airline"];
 
@@ -56,13 +57,17 @@ export default function SecondPage(){
                         aria-labelledby="demo-radio-buttons-group-label"
                         name="flight-group"
                     >
-            {Object.keys(FlightsData).map((keyName, i) =>(
+            {FlightsData.map(({company, flightNumber, date, transitTime, layover, howManyLayovers, allowedLuggage, price}) =>(
             <Grid>
             <Item>
-            <FormControlLabel value={i} control={<Radio />} label="Take this Flight" />
-            <li className="travelcompany-input" key={i}>
-                <span className="input-label"></span>
-            </li>
+            <FormControlLabel value={company} control={<Radio />} label="Take this Flight" />
+            <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>Company: {company}</Typography>
+            <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>Flight Number: {flightNumber}</Typography>
+            <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>Date: {date}</Typography>
+            <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>Transition Time: {transitTime}</Typography>
+            {GetLayovers(layover,howManyLayovers)}
+            {GetLuggage(allowedLuggage)}
+            <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>Price: {price}€</Typography>
             </Item>
             </Grid>))}
             </RadioGroup>
@@ -70,10 +75,47 @@ export default function SecondPage(){
         );
     }
 
+    const GetLayovers = (layover, howMany) => {
+        if(layover === false)
+        {
+            return (
+                <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>
+                    Layovers: No
+                </Typography>
+            );
+        }
+        else{
+            return(
+                <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>
+                    Layovers: Yes, {howMany}
+                </Typography>
+                );
+        }
+    }
+
+    const GetLuggage = (luggage) =>{
+        if(luggage)
+        {
+            return(
+                <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>
+                    Luggage: Allowed
+                </Typography>
+                );
+        }
+        else
+        {
+            return(
+                <Typography style={{textAlign: "left"}} variant="body2" gutterBottom>
+                    Luggage: Not Allowed
+                </Typography>
+                );
+        }
+
+    }
     return(
         
         
-        <Box container>
+        <Box >
             <Grid container>
             <Grid direction="column" justifyContent="flex-start" alignItems="flex-start" margin = {3}>
             
@@ -120,12 +162,11 @@ export default function SecondPage(){
             </Item>
                 
             </Grid>
-
-            
-                
             <GetFlights/>
                 
-            
+            <Grid justifyContent="flex-start" margin = {17}>
+                <SubmitButton/>
+            </Grid>
             </Grid>
             
         </Box>
