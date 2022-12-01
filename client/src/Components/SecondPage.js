@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Container from '@mui/material/Container';
-import { positions } from '@mui/system';
-import Button from "./Button";
 import SubmitButton from "./Submit Button";
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import Slider from '@mui/material/Slider';
 import FilterButton from "./Filter Button";
 import NativeSelect from '@mui/material/NativeSelect';
-import InputLabel from '@mui/material/InputLabel';
 import {FlightsData} from "./provdb";
 import Typography from '@mui/material/Typography';
 
@@ -30,8 +24,6 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-
-  
 
 export default function SecondPage(){
 
@@ -74,7 +66,6 @@ export default function SecondPage(){
             </Grid>
         );
     }
-
     const GetLayovers = (layover, howMany) => {
         if(layover === false)
         {
@@ -92,7 +83,6 @@ export default function SecondPage(){
                 );
         }
     }
-
     const GetLuggage = (luggage) =>{
         if(luggage)
         {
@@ -112,9 +102,8 @@ export default function SecondPage(){
         }
 
     }
+
     return(
-        
-        
         <Box >
             <Grid container>
             <Grid direction="column" justifyContent="flex-start" alignItems="flex-start" margin = {3}>
@@ -165,14 +154,10 @@ export default function SecondPage(){
             <GetFlights/>
                 
             <Grid justifyContent="flex-start" margin = {17}>
-                <SubmitButton/>
+                <SubmitButton handle ="/third"/>
             </Grid>
             </Grid>
             
         </Box>
-        
-        
-    
     );
-
 }
