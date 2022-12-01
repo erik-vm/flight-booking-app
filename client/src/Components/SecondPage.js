@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Container2 from '@mui/material/Container';
+import Container from '@mui/material/Container';
 import { positions } from '@mui/system';
 import Button from "./Button";
 import SubmitButton from "./Submit Button";
@@ -18,6 +18,7 @@ import Slider from '@mui/material/Slider';
 import FilterButton from "./Filter Button";
 import NativeSelect from '@mui/material/NativeSelect';
 import InputLabel from '@mui/material/InputLabel';
+import {FlightsData} from "./provdb"
 
 const airlineNames = ["Big Airline", "Modest Airlene", "Roma Airline"];
 
@@ -48,12 +49,33 @@ export default function SecondPage(){
             </NativeSelect>
         );
     }
+    const GetFlights = () => {
+        return(
+            <Grid direction="column" justifyContent="flex-start" alignItems="stretch" margin = {3}>
+                <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        name="flight-group"
+                    >
+            {Object.keys(FlightsData).map((keyName, i) =>(
+            <Grid>
+            <Item>
+            <FormControlLabel value={i} control={<Radio />} label="Take this Flight" />
+            <li className="travelcompany-input" key={i}>
+                <span className="input-label"></span>
+            </li>
+            </Item>
+            </Grid>))}
+            </RadioGroup>
+            </Grid>
+        );
+    }
 
     return(
         
-    
-        <Box sx={{margin: 0,  width: 250}}>
-            <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" margin = {3}>
+        
+        <Box container>
+            <Grid container>
+            <Grid direction="column" justifyContent="flex-start" alignItems="flex-start" margin = {3}>
             
             <Item>
                 <Grid margin = {3}>
@@ -99,10 +121,16 @@ export default function SecondPage(){
                 
             </Grid>
 
-            <Grid container justifyContent="center" alignItems="flex-end" >
+            
                 
+            <GetFlights/>
+                
+            
             </Grid>
+            
         </Box>
+        
+        
     
     );
 
